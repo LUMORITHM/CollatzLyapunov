@@ -20,7 +20,7 @@ def alpha(n_mod_16: int) -> float:
        12: -0.06, 13: -0.05, 14: -0.03, 15:  0.09
     }
 
-    try:
-        return penalties[n_mod_16]
-    except KeyError:
+    if not isinstance(n_mod_16, int) or n_mod_16 not in range(16):
         raise ValueError("Input must be an integer between 0 and 15 (inclusive).")
+
+    return penalties[n_mod_16]
